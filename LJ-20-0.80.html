@@ -1,0 +1,184 @@
+<html lang="en">
+<head>
+    <title>Template (Three.js)</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel=stylesheet href="css/base.css"/>
+</head>
+<body>
+
+<script src="js/Three.js"></script>
+
+<script src="js/Detector.js"></script>
+<script src="js/Stats.js"></script>
+<script src="js/OrbitControls.js"></script>
+<script src="js/KeyboardState.js"></script>
+<script src="js/THREEx.FullScreen.js"></script>
+<script src="js/THREEx.WindowResize.js"></script>
+
+
+
+<!-- ------------------------------------------------------------ -->
+
+<div id="ThreeJS" style="position: absolute; left:0px; top:0px"></div>
+<script>
+/*
+	Three.js "tutorials by example"
+	Author: Lee Stemkoski
+	Date: July 2013 (three.js v59dev)
+ */
+
+// MAIN
+
+// standard global variables
+var container, scene, camera, renderer, controls, stats;
+var keyboard = new KeyboardState();
+var clock = new THREE.Clock();
+
+// custom global variables
+var mesh;
+
+init();
+animate();
+
+// FUNCTIONS 		
+function init() 
+{
+	
+	// SCENE
+	scene = new THREE.Scene();
+	// CAMERA
+	var SCREEN_WIDTH = window.innerWidth, SCREEN_HEIGHT = window.innerHeight;
+	var VIEW_ANGLE = 45, ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 0.1, FAR = 20000;
+	camera = new THREE.PerspectiveCamera( VIEW_ANGLE, ASPECT, NEAR, FAR);
+	scene.add(camera);
+	camera.position.set(321.496,321.496,321.496);	camera.lookAt(scene.position);	
+	// RENDERER
+	if ( Detector.webgl )
+		renderer = new THREE.WebGLRenderer( {antialias:true} );
+	else
+		renderer = new THREE.CanvasRenderer(); 
+	 renderer.setClearColor(0xffffff);
+	renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+	container = document.getElementById( 'ThreeJS' );
+	container.appendChild( renderer.domElement );
+	
+	// EVENTS
+	THREEx.WindowResize(renderer, camera);
+	THREEx.FullScreen.bindKey({ charCode : 'm'.charCodeAt(0) });
+	
+	// CONTROLS
+	controls = new THREE.OrbitControls( camera, renderer.domElement );
+	
+	
+	
+
+	// LIGHT
+	var light = new THREE.PointLight(0xffffff);
+	light.position.set(100,250,100);
+	scene.add(light);	 var geometry = new THREE.SphereGeometry(15.5172, 32, 32 );	 var material = new THREE.MeshLambertMaterial( { color: 0x122088 } );	
+point1= new THREE.Mesh(geometry,material);
+point1.position.set(42.5144,27.9715,18.8064);
+scene.add(point1);
+	
+point2= new THREE.Mesh(geometry,material);
+point2.position.set(33.4638,30.6147,-29.655);
+scene.add(point2);
+	
+point3= new THREE.Mesh(geometry,material);
+point3.position.set(23.7941,19.3721,-76.8438);
+scene.add(point3);
+	
+point4= new THREE.Mesh(geometry,material);
+point4.position.set(70.0389,11.7925,-56.3733);
+scene.add(point4);
+	
+point5= new THREE.Mesh(geometry,material);
+point5.position.set(-32.3508,-3.10195,4.22675);
+scene.add(point5);
+	
+point6= new THREE.Mesh(geometry,material);
+point6.position.set(-12.6162,-37.8093,-26.4775);
+scene.add(point6);
+	
+point7= new THREE.Mesh(geometry,material);
+point7.position.set(-10.8453,10.7139,-40.6465);
+scene.add(point7);
+	
+point8= new THREE.Mesh(geometry,material);
+point8.position.set(29.4116,-18.9433,-47.2709);
+scene.add(point8);
+	
+point9= new THREE.Mesh(geometry,material);
+point9.position.set(53.792,-20.3016,-89.6625);
+scene.add(point9);
+	
+point10= new THREE.Mesh(geometry,material);
+point10.position.set(-4.1801,38.2805,1.7182);
+scene.add(point10);
+	
+point11= new THREE.Mesh(geometry,material);
+point11.position.set(87.5695,7.62995,25.595);
+scene.add(point11);
+	
+point12= new THREE.Mesh(geometry,material);
+point12.position.set(76.7421,-36.3586,-46.72);
+scene.add(point12);
+	
+point13= new THREE.Mesh(geometry,material);
+point13.position.set(107.165,-3.7943,-22.1091);
+scene.add(point13);
+	
+point14= new THREE.Mesh(geometry,material);
+point14.position.set(-3.415,-40.,24.5739);
+scene.add(point14);
+	
+point15= new THREE.Mesh(geometry,material);
+point15.position.set(14.936,-5.8981,-3.33325);
+scene.add(point15);
+	
+point16= new THREE.Mesh(geometry,material);
+point16.position.set(80.046,37.6486,-13.9291);
+scene.add(point16);
+	
+point17= new THREE.Mesh(geometry,material);
+point17.position.set(2.13165,7.3123,41.0995);
+scene.add(point17);
+	
+point18= new THREE.Mesh(geometry,material);
+point18.position.set(60.6177,-6.5956,-12.2632);
+scene.add(point18);
+	
+point19= new THREE.Mesh(geometry,material);
+point19.position.set(87.5546,-40.,9.0436);
+scene.add(point19);
+	
+point20= new THREE.Mesh(geometry,material);
+point20.position.set(44.4681,-20.1736,32.5177);
+scene.add(point20);
+}
+
+function animate() {
+    requestAnimationFrame( animate );
+	render();		
+	update();
+}
+
+function update(){
+	if ( keyboard.pressed("z") ) 
+	{	  
+		// do something
+	}
+	
+	controls.update();
+	stats.update();
+}
+
+function render() {
+	renderer.render( scene, camera );
+}
+
+</script>
+
+</body>
+</html>

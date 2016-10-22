@@ -1,0 +1,160 @@
+<html lang="en">
+<head>
+    <title>Template (Three.js)</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel=stylesheet href="css/base.css"/>
+</head>
+<body>
+
+<script src="js/Three.js"></script>
+
+<script src="js/Detector.js"></script>
+<script src="js/Stats.js"></script>
+<script src="js/OrbitControls.js"></script>
+<script src="js/KeyboardState.js"></script>
+<script src="js/THREEx.FullScreen.js"></script>
+<script src="js/THREEx.WindowResize.js"></script>
+
+
+
+<!-- ------------------------------------------------------------ -->
+
+<div id="ThreeJS" style="position: absolute; left:0px; top:0px"></div>
+<script>
+/*
+	Three.js "tutorials by example"
+	Author: Lee Stemkoski
+	Date: July 2013 (three.js v59dev)
+ */
+
+// MAIN
+
+// standard global variables
+var container, scene, camera, renderer, controls, stats;
+var keyboard = new KeyboardState();
+var clock = new THREE.Clock();
+
+// custom global variables
+var mesh;
+
+init();
+animate();
+
+// FUNCTIONS 		
+function init() 
+{
+	
+	// SCENE
+	scene = new THREE.Scene();
+	// CAMERA
+	var SCREEN_WIDTH = window.innerWidth, SCREEN_HEIGHT = window.innerHeight;
+	var VIEW_ANGLE = 45, ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 0.1, FAR = 20000;
+	camera = new THREE.PerspectiveCamera( VIEW_ANGLE, ASPECT, NEAR, FAR);
+	scene.add(camera);
+	camera.position.set(227.366,227.366,227.366);	camera.lookAt(scene.position);	
+	// RENDERER
+	if ( Detector.webgl )
+		renderer = new THREE.WebGLRenderer( {antialias:true} );
+	else
+		renderer = new THREE.CanvasRenderer(); 
+	 renderer.setClearColor(0xffffff);
+	renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+	container = document.getElementById( 'ThreeJS' );
+	container.appendChild( renderer.domElement );
+	
+	// EVENTS
+	THREEx.WindowResize(renderer, camera);
+	THREEx.FullScreen.bindKey({ charCode : 'm'.charCodeAt(0) });
+	
+	// CONTROLS
+	controls = new THREE.OrbitControls( camera, renderer.domElement );
+	
+	
+	
+
+	// LIGHT
+	var light = new THREE.PointLight(0xffffff);
+	light.position.set(100,250,100);
+	scene.add(light);	 var geometry = new THREE.SphereGeometry(15.7469, 32, 32 );	 var material = new THREE.MeshLambertMaterial( { color: 0x122088 } );	
+point1= new THREE.Mesh(geometry,material);
+point1.position.set(-5.5559,-18.3313,-45.4352);
+scene.add(point1);
+	
+point2= new THREE.Mesh(geometry,material);
+point2.position.set(50.9841,35.,-61.1221);
+scene.add(point2);
+	
+point3= new THREE.Mesh(geometry,material);
+point3.position.set(1.8884,27.8475,-62.0538);
+scene.add(point3);
+	
+point4= new THREE.Mesh(geometry,material);
+point4.position.set(26.8182,27.002,-104.499);
+scene.add(point4);
+	
+point5= new THREE.Mesh(geometry,material);
+point5.position.set(34.4091,-8.20455,-70.6259);
+scene.add(point5);
+	
+point6= new THREE.Mesh(geometry,material);
+point6.position.set(72.8417,-35.,-80.8641);
+scene.add(point6);
+	
+point7= new THREE.Mesh(geometry,material);
+point7.position.set(-42.5118,7.23835,-67.2918);
+scene.add(point7);
+	
+point8= new THREE.Mesh(geometry,material);
+point8.position.set(-6.08325,-10.521,-96.0297);
+scene.add(point8);
+	
+point9= new THREE.Mesh(geometry,material);
+point9.position.set(40.8131,-35.,-31.3041);
+scene.add(point9);
+	
+point10= new THREE.Mesh(geometry,material);
+point10.position.set(75.7886,-2.7484,-43.8543);
+scene.add(point10);
+	
+point11= new THREE.Mesh(geometry,material);
+point11.position.set(29.2985,11.5535,-24.3912);
+scene.add(point11);
+	
+point12= new THREE.Mesh(geometry,material);
+point12.position.set(73.4245,10.8876,-96.4928);
+scene.add(point12);
+	
+point13= new THREE.Mesh(geometry,material);
+point13.position.set(-22.6198,35.,-104.358);
+scene.add(point13);
+	
+point14= new THREE.Mesh(geometry,material);
+point14.position.set(39.5644,-19.6639,-117.325);
+scene.add(point14);
+}
+
+function animate() {
+    requestAnimationFrame( animate );
+	render();		
+	update();
+}
+
+function update(){
+	if ( keyboard.pressed("z") ) 
+	{	  
+		// do something
+	}
+	
+	controls.update();
+	stats.update();
+}
+
+function render() {
+	renderer.render( scene, camera );
+}
+
+</script>
+
+</body>
+</html>
